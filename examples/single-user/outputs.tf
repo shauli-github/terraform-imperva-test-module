@@ -1,4 +1,4 @@
 output "user_email" {
   description = "created user email"
-  value       = incapsula_account_user.user.email
+  value       = module.create_user.user_email
 }
