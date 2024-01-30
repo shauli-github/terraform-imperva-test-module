@@ -4,5 +4,5 @@ terraform {
       source = "imperva/incapsula"
     }
   }
-  required_version = ">= 3.21.2"
+  required_version = ">= 0.13"
 }
