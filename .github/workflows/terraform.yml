@@ -23,9 +23,9 @@ jobs:
           for example in examples/*; do
             if [ -d "$example" ]; then
               cd "$example"
-              pwd
               terraform validate
               terraform fmt -check
+              echo "Running init from $(pwd)"
               terraform init
               terraform plan
               terraform apply -auto-approve
