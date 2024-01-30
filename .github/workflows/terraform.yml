@@ -30,7 +30,7 @@ jobs:
               terraform fmt -check
               terraform plan > /dev/null
               terraform apply -auto-approve
-              terraform destroy -auto-approve > /dev/null
+              terraform destroy -auto-approve
               cd ..
             fi
           done
