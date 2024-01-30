@@ -25,7 +25,7 @@ jobs:
             if [ -d "$example" ]; then
               cd "$example"
               echo "Running terraform cmd from $(pwd)"
-              echo ${TEST_SECRET}
+              echo ${INCAPSULA_API_KEY}
               terraform init
               terraform validate
               terraform fmt -check
