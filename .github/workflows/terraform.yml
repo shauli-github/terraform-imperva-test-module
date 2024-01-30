@@ -28,7 +28,7 @@ jobs:
               terraform init
               terraform validate
               terraform fmt -check
-              terraform plan
+              terraform plan -out=tfplan.out > /dev/null
               terraform apply -auto-approve
               terraform destroy -auto-approve
               cd ..
