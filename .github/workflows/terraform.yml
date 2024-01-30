@@ -1,0 +1,35 @@
+name: Terraform Acceptance Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  terraform-acceptance-tests:
+    runs-on: ubuntu-latest
+
+    env:
+      INCAPSULA_API_ID: ${{ secrets.API_ID }}
+      INCAPSULA_API_KEY: ${{ secrets.API_KEY }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Run Terraform Examples
+        run: |
+          for example in examples/*; do
+            if [ -d "$example" ]; then
+              cd "$example"
+              terraform validate
+              terraform fmt -check
+              terraform init -input=false
+              terraform plan
+              terraform apply -auto-approve
+              terraform destroy -auto-approve
+              cd ..
+            fi
+          done
