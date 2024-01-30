@@ -23,6 +23,7 @@ jobs:
           for example in examples/*; do
             if [ -d "$example" ]; then
               cd "$example"
+              pwd
               terraform validate
               terraform fmt -check
               terraform init -input=false
