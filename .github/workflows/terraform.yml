@@ -23,10 +23,10 @@ jobs:
           for example in examples/*; do
             if [ -d "$example" ]; then
               cd "$example"
+              echo "Running terraform cmd from $(pwd)"
+              terraform init
               terraform validate
               terraform fmt -check
-              echo "Running init from $(pwd)"
-              terraform init
               terraform plan
               terraform apply -auto-approve
               terraform destroy -auto-approve
